@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+        <title>تسجيل الدخول - فارما جروب لتجارة وتوزيع الأدوية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --card-border: rgba(255, 255, 255, 0.2);
+            --text-muted: #6b7280;
+            --text-strong: #374151;
+            --input-bg: rgba(255, 255, 255, 0.9);
+            --input-bg-focus: rgba(255, 255, 255, 1);
+            --input-border: #e5e7eb;
+            --input-text: #374151;
+            --input-icon-color: #9ca3af;
+        }
+        html[data-theme="dark"] {
+            color-scheme: dark;
+            --card-bg: #111827;
+            --card-border: #1f2937;
+            --text-muted: #94a3b8;
+            --text-strong: #cbd5e1;
+            --input-bg: #1f2937;
+            --input-bg-focus: #1f2937;
+            --input-border: #374151;
+            --input-text: #f1f5f9;
+            --input-icon-color: #94a3b8;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-x: hidden; width: 100%; max-width: 100vw; }
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 50%, #43e97b 100%);
+            min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1rem; position: relative; overflow-x: hidden; width: 100%; max-width: 100vw;
+        }
+        body::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.08"><circle cx="30" cy="30" r="2"/><path d="M30 15c8.284 0 15 6.716 15 15s-6.716 15-15 15-15-6.716-15-15 6.716-15 15-15zm0 2c-7.18 0-13 5.82-13 13s5.82 13 13 13 13-5.82 13-13-5.82-13-13-13z" fill-opacity="0.03"/></g></svg>');
+            animation: float 25s infinite linear;
+        }
+        @keyframes float { 0% { transform: translateY(0px) rotate(0deg); } 100% { transform: translateY(-100px) rotate(360deg); } }
+        .login-container {
+            background: var(--card-bg); backdrop-filter: blur(20px); border-radius: 24px; box-shadow: 0 25px 50px rgba(0,0,0,0.15); padding: 3rem 2.5rem; max-width: 450px; width: 100%; position: relative; z-index: 10; border: 1px solid var(--card-border); animation: slideUp 0.8s cubic-bezier(0.4,0,0.2,1);
+        }
+        @keyframes slideUp { from { opacity:0; transform: translateY(30px) scale(0.95);} to { opacity:1; transform: translateY(0) scale(1);} }
+        .login-header { text-align:center; margin-bottom:2.5rem; }
+        .logo-icon { width:80px; height:80px; background: linear-gradient(135deg,#4facfe,#00f2fe); border-radius:20px; display:flex; align-items:center; justify-content:center; margin:0 auto 1.5rem; box-shadow:0 10px 30px rgba(79,172,254,0.3); animation:pulse 2s infinite; font-size:2.5rem; }
+        @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        .login-title { font-size:2rem; font-weight:700; background: linear-gradient(135deg,#4facfe,#00f2fe); -webkit-background-clip:text; -webkit-text-fill-color: transparent; background-clip:text; margin-bottom:0.5rem; }
+        .login-subtitle { color: var(--text-muted); font-size:1rem; font-weight:400; }
+        .form-group { margin-bottom:1.5rem; width:100%; }
+        .form-group label { display:block; color: var(--text-strong); margin-bottom:0.5rem; font-weight:600; font-size:0.95rem; }
+        .input-wrapper { position:relative; width:100%; }
+        .form-group input, .form-group select {
+            width: 100%; padding: 1rem 3rem 1rem 1rem; border: 2px solid var(--input-border); border-radius: 12px; font-size:1rem; font-family:'Cairo', sans-serif; transition: all 0.3s ease; background: var(--input-bg); color: var(--input-text); box-sizing:border-box; max-width:100%; appearance:none; -webkit-appearance:none; -moz-appearance:none;
+        }
+        .input-icon { position:absolute; left:1rem; top:50%; transform: translateY(-50%); color: var(--input-icon-color); font-size:1.1rem; transition:all .3s ease; }
+        .form-group input:focus, .form-group select:focus { outline:none; border-color:#4facfe; box-shadow: 0 0 0 3px rgba(79,172,254,0.1); background: var(--input-bg-focus); }
+        .form-group input:focus + .input-icon, .form-group select:focus + .input-icon { color:#4facfe; }
+        .login-btn { width:100%; padding:1rem; background: linear-gradient(135deg,#4facfe,#00f2fe); color:white; border:none; border-radius:12px; font-size:1.1rem; font-weight:600; font-family:'Cairo', sans-serif; cursor:pointer; transition: all 0.3s ease; box-shadow:0 4px 15px rgba(79,172,254,0.3); display:flex; align-items:center; justify-content:center; gap:0.5rem; }
+        .login-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(79,172,254,0.4); }
+        .login-btn:active { transform: translateY(0); }
+        .back-link { display:inline-flex; align-items:center; gap:0.5rem; color: var(--text-muted); text-decoration:none; font-size:0.9rem; margin-top:1.5rem; transition: all 0.3s ease; padding:0.5rem; border-radius:8px; }
+        .back-link:hover { color:#4facfe; background: rgba(79,172,254,0.1); }
+        @media (max-width: 480px) { .login-container { padding: 2rem 1.25rem; } .login-title { font-size:1.7rem; } }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <div class="logo-icon"><i class="fas fa-pills"></i></div>
+            <h1 class="login-title">تاج فارما</h1>
+            <div class="login-subtitle">لتجارة وتوزيع الأدوية</div>
+        </div>
+
+        <form>
+            <div class="form-group">
+                <label for="userCode">كود المستخدم</label>
+                <div class="input-wrapper">
+                    <input id="userCode" type="text" placeholder="أدخل كود المستخدم للبحث السريع">
+                    <span class="input-icon"><i class="fas fa-hashtag"></i></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="userName">اسم المستخدم</label>
+                <div class="input-wrapper">
+                    <select id="userName" disabled>
+                        <option>-- اختر اسم المستخدم --</option>
+                        <option>⏳ جاري تحميل المستخدمين...</option>
+                    </select>
+                    <span class="input-icon"><i class="fas fa-user"></i></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">كلمة المرور</label>
+                <div class="input-wrapper">
+                    <input id="password" type="password" placeholder="أدخل كلمة المرور">
+                    <span class="input-icon"><i class="fas fa-lock"></i></span>
+                </div>
+            </div>
+
+            <button type="submit" class="login-btn"><i class="fas fa-sign-in-alt"></i> دخول النظام</button>
+        </form>
+
+        <div style="text-align:center;">
+            <a class="back-link" href="index.html"><i class="fas fa-arrow-right"></i> العودة للصفحة الرئيسية</a>
+        </div>
+    </div>
+</body>
+</html>

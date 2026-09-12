@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="لوحة إدارة توزيع الأدوية">
+  <title>لوحة التحكم | فارما جروب</title>
+  <link rel="stylesheet" href="dashboard.css?v=dark-button-1">
+</head>
+<body data-theme="default">
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="icon-button menu-toggle" id="menuToggle" aria-label="فتح القائمة">☰</button>
+      <div class="brand"><span class="brand-mark">✚</span><div><strong>فارما جروب</strong><small>نظام إدارة المبيعات</small></div></div>
+      <div class="topbar-actions"><span class="user-chip">مرحبًا، <b>ORGA</b></span><button class="outline-button" id="logoutButton">تسجيل الخروج</button></div>
+    </header>
+
+    <div class="workspace">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-heading"><span>الوحدات</span><span class="status-dot">متصل</span></div>
+        <nav id="moduleNav" aria-label="الوحدات الرئيسية"></nav>
+        <div class="sidebar-footer"><span>الثيم</span><div class="theme-switcher" role="group" aria-label="اختيار الثيم"><button data-theme-choice="default" title="نيلي"></button><button data-theme-choice="emerald" title="أخضر"></button><button data-theme-choice="dark" title="داكن"></button></div></div>
+      </aside>
+
+      <main class="content">
+        <section class="page-heading"><div><span class="eyebrow">نظرة عامة</span><h1>لوحة التحكم الرئيسية</h1><p>إدارة شاملة ومتطورة لجميع عمليات التجارة والتوزيع.</p></div><button class="primary-button" id="quickSale">＋ تسجيل عملية</button></section>
+        <section class="quick-actions" aria-labelledby="quickTitle"><div class="section-label"><span id="quickTitle">اختصارات سريعة</span><span class="section-rule"></span></div><div class="quick-grid"><button data-action="cash"><span>▣</span><b>استلام نقدية</b><small>إضافة تحصيل جديد</small></button><button data-action="return"><span>↩</span><b>مردود مبيعات</b><small>تسجيل مرتجع</small></button><button data-action="invoice"><span>▤</span><b>فاتورة مبيعات</b><small>إنشاء فاتورة</small></button></div></section>
+        <section class="metrics" aria-label="ملخص اليوم"><article><span class="metric-icon blue">▤</span><div><small>مبيعات اليوم</small><strong>128,450 <em>ج.م</em></strong><span class="trend up">↑ 12.8%</span></div></article><article><span class="metric-icon green">◈</span><div><small>طلبات قيد التنفيذ</small><strong>36</strong><span class="trend up">↑ 8 طلبات</span></div></article><article><span class="metric-icon amber">◌</span><div><small>أصناف منخفضة</small><strong>14</strong><span class="trend warning">تحتاج مراجعة</span></div></article><article><span class="metric-icon violet">♙</span><div><small>عملاء نشطون</small><strong>248</strong><span class="trend up">↑ 4.2%</span></div></article></section>
+        <section class="panel-grid"><article class="panel activity-panel"><div class="panel-heading"><div><span class="eyebrow">آخر العمليات</span><h2>النشاط اليومي</h2></div><button class="text-button" data-action="activity">عرض الكل ←</button></div><div class="activity-list" id="activityList"></div></article><article class="panel stock-panel"><div class="panel-heading"><div><span class="eyebrow">المخزون</span><h2>تنبيهات سريعة</h2></div><button class="text-button" data-action="stock">إدارة المخزون ←</button></div><div class="stock-list" id="stockList"></div></article></section>
+        <section class="welcome-strip"><div><span class="eyebrow">مركز العمليات</span><h2>كل ما تحتاجه لإدارة التوزيع في مكان واحد.</h2><p>تابع المبيعات والمخزون والعملاء من واجهة واحدة واضحة وسريعة.</p></div><span class="strip-mark">✚</span></section>
+      </main>
+    </div>
+  </div>
+  <div class="module-modal" id="moduleModal" aria-hidden="true">
+    <div class="module-dialog" role="dialog" aria-modal="true" aria-labelledby="moduleViewTitle">
+      <div class="module-dialog-head"><div><span class="eyebrow">وحدة النظام</span><h2 id="moduleViewTitle"></h2></div><button class="dialog-close" id="moduleModalClose" aria-label="إغلاق">×</button></div>
+      <div class="module-toolbar"><label>بحث سريع<input id="moduleSearch" type="search" placeholder="اكتب للبحث..."></label><button class="primary-button" id="moduleAdd">＋ إضافة جديد</button></div>
+      <div id="moduleViewBody"></div>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="dashboard.js?v=settings-persist-2"></script>
+</body>
+</html>
